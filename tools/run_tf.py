@@ -523,8 +523,8 @@ def main():
             run_thermal_scan(exe, config, gammaC_values, gammaS_values, Vs, cents, dndy, outdir, outlabel, outfile)
         else:
             print("Scan not requested, running single thermal point with list of optimised gammaC values for each centrality")
-            #optimised_file = ROOT.TFile(f"{outdir}/{outlabel}_scan_results.root", "READ")
-            optimised_file = ROOT.TFile(f"/home/spolitan/alice/Thermal-FIST/tools/gammac_scan_charm_canonical_withstrange_thermal_points_std/fist_scan_scan_results.root", "READ")
+            optimised_file = ROOT.TFile(f"{outdir}/{outlabel}_scan_results.root", "READ")
+            #optimised_file = ROOT.TFile(f"/home/spolitan/alice/Thermal-FIST/tools/gammac_scan_charm_canonical_withstrange_thermal_points_std/fist_scan_scan_results.root", "READ")
             graph_optimised_gammaC_cent = optimised_file.Get("graph_optimised_gammaC_cent")
             optimised_gammaC_values = []
             for icent in range(graph_optimised_gammaC_cent.GetN()):
