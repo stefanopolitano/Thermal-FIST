@@ -1,0 +1,35 @@
+thermal_fist_path: "/home/spolitan/alice/Thermal-FIST"
+build_dir: "build"
+particle_list: "/home/spolitan/alice/Thermal-FIST/input/list/PDG2025/list-withcharm-reso.dat"
+decays_list: "/home/spolitan/alice/Thermal-FIST/input/list/PDG2025/decays.dat"
+xsec_list: "/home/spolitan/alice/Thermal-FIST/tools/charm_xsec_n_pbpb_5dot36tev.txt" # if not provided, no scan will be performed and only the default gammaC value will be used
+
+outdir: "./gammac_scan_canonical_withstrange_thermal_points_charmreso_final_stabilityflag"
+outlabel: "fist_scan"
+debug: true
+
+# Thermal point parameters
+T: 0.155 # GeV
+V: 4064.0
+muB: 0.0
+muQ: 0.0
+muS: 0.0
+muC: 0.0
+gammaS: 1.0
+gammaC: 1.0
+gammaQ: 1.0
+model_type: 1           # 0=Charm-Canonical, 1=Ideal HRG, 2=Strangeness-Canonical
+feeddown: 1       # 0=StabilityFlag, 1=Primordial, 2=Strong, 3=All
+width_mode: 0  
+      # ZeroWidth,             ///< Zero-width approximation
+      # BWTwoGamma,            ///< Energy-independent Breit-Wigner in +-2\Gamma interval
+      # FullInterval,          ///< Energy-independent Breit-Wigner in full energy interval
+      # FullIntervalWeighted,  ///< Energy-independent Breit-Wigner in full energy interval with weighted branching ratios
+      # eBW,                   ///< Energy-dependent Breit-Wigner scheme (eBW)
+      # eBWconstBR             ///< Energy-dependent Breit-Wigner scheme (eBW) with constant branching ratios when evaluating feeddown
+statistics: 0      # 0=Boltzmann, 1=Quantum
+scan_params: # only gammaC for now, but can be extended to other parameters in the future
+      perform_scan: false # set to true to perform a scan over the specified parameters, false to just run a single thermal point with the central values specified in the optimised_params section
+      mins: [10, 10, 10, 10, 10, 10, 5, 5, 5] # one for each centrality bin, in the same order as in the xsec list (from most central to most peripheral)
+      maxs: [200, 200, 200, 200, 200, 200, 200, 200, 200]
+      npoints: [5, 5, 5, 5, 5, 5, 5, 5, 5]
