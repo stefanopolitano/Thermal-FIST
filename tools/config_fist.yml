@@ -1,6 +1,6 @@
 thermal_fist_path: "/Users/fgrosa/cernbox/Thermal-FIST"
 build_dir: "build"
-particle_list: "/Users/fgrosa/cernbox/Thermal-FIST/input/list/PDG2025/list-withcharm_noDs2KD.dat"
+particle_list: "/Users/fgrosa/cernbox/Thermal-FIST/input/list/PDG2025/list-withcharm.dat"
 decays_list: "/Users/fgrosa/cernbox/Thermal-FIST/input/list/PDG2025/decays.dat"
 xsec_list: "/Users/fgrosa/cernbox/Thermal-FIST/tools/charm_xsec_n_pbpb_5dot36tev.txt" # if not provided, no scan will be performed and only the default gammaC value will be used
 
