@@ -1,10 +1,10 @@
-thermal_fist_path: "/home/spolitan/alice/Thermal-FIST"
+thermal_fist_path: "/Users/fgrosa/cernbox/Thermal-FIST"
 build_dir: "build"
-particle_list: "/home/spolitan/alice/Thermal-FIST/input/list/PDG2025/list-withcharm-reso.dat"
-decays_list: "/home/spolitan/alice/Thermal-FIST/input/list/PDG2025/decays.dat"
-xsec_list: "/home/spolitan/alice/Thermal-FIST/tools/charm_xsec_n_pbpb_5dot36tev.txt" # if not provided, no scan will be performed and only the default gammaC value will be used
+particle_list: "/Users/fgrosa/cernbox/Thermal-FIST/input/list/PDG2025/list-withcharm-reso.dat"
+decays_list: "/Users/fgrosa/cernbox/Thermal-FIST/input/list/PDG2025/decays_rqm.dat"
+xsec_list: "/Users/fgrosa/cernbox/Thermal-FIST/tools/charm_xsec_n_pbpb_5dot36tev.txt" # if not provided, no scan will be performed and only the default gammaC value will be used
 
-outdir: "./gammac_scan_canonical_withstrange_thermal_points_charmreso_final_stabilityflag"
+outdir: "./dsoverdplus_scan_canonical_withstrange_thermal_points_charmreso_final_stabilityflag"
 outlabel: "fist_scan"
 debug: true
 
@@ -33,3 +33,4 @@ scan_params: # only gammaC for now, but can be extended to other parameters in t
       mins: [10, 10, 10, 10, 10, 10, 5, 5, 5] # one for each centrality bin, in the same order as in the xsec list (from most central to most peripheral)
       maxs: [200, 200, 200, 200, 200, 200, 200, 200, 200]
       npoints: [5, 5, 5, 5, 5, 5, 5, 5, 5]
+observable: dsoverdp # options: dsoverdp, resoyields
