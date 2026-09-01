@@ -181,6 +181,7 @@ int main(int argc, char* argv[]) {
   // Loop over all particles and calculate yields for charm ground states (charm > 0).
   printf("Calculating yields for charm ground states (feeddown type %d)...\n", feeddown_type_int);
   printf("Total number of particles in the system: %zu\n", model->TPS()->Particles().size());
+  std::vector<int> pdg_codes_charm = {411, 421, 431, 413, 423, 433, 10411, 10421, 10413, 10423, 20413, 20423, 415, 425, 9000046, 9000047, 9000048, 9000049, 9000050, 9000051, 9000052};
   for (const auto& part : model->TPS()->Particles()) {
     //if (!part.IsStable())          continue; // Only consider stable particles
     if (part.Charm() <= 0)         continue; // Only consider charm > 0 ground states
@@ -191,22 +192,23 @@ int main(int argc, char* argv[]) {
     const double strong_density = model->GetDensity(pdg, Feeddown::Strong);
     const double weak_density = model->GetDensity(pdg, Feeddown::Weak);
     const double yield =
-        model->GetDensity(pdg, Feeddown::Weak) * model->Volume();
+        model->GetDensity(pdg, Feeddown::Weak) * model->Volume() / 3;
     const double yield_primordial =
-        model->GetDensity(pdg, Feeddown::Primordial) * model->Volume();
+        model->GetDensity(pdg, Feeddown::Primordial) * model->Volume() / 3;
     const double yield_strong =
-        model->GetDensity(pdg, Feeddown::Strong) * model->Volume();
+        model->GetDensity(pdg, Feeddown::Strong) * model->Volume() / 3;
     const double yield_weak =
-        model->GetDensity(pdg, Feeddown::Weak) * model->Volume();
+        model->GetDensity(pdg, Feeddown::Weak) * model->Volume() / 3;
     const double yield_stability_flag =
-        model->GetDensity(pdg, Feeddown::StabilityFlag) * model->Volume();
+        model->GetDensity(pdg, Feeddown::StabilityFlag) * model->Volume() / 3;
     
         const std::string key =
         "Nch_" + sanitize_key(part.Name()) + "_pdg" +
         std::to_string(pdg);
 
     // Print yields for Ds and D+
-    if (abs(pdg) == 411 || abs(pdg) == 431) {
+
+    if (std::find(pdg_codes_charm.begin(), pdg_codes_charm.end(), abs(pdg)) != pdg_codes_charm.end()) {
        //printf("Volume = %f fm^3\n", model->Volume());
        //printf("PDG: %lld, yield = %f (primordial density = %e)\n", abs(pdg), yield_primordial, primordial_density);
        //printf("PDG: %lld, yield = %f (strong density = %e)\n", abs(pdg), yield_strong, strong_density);
